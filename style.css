@@ -30,6 +30,11 @@ input, textarea {
     width: 100%;
     resize: none;
 }
+
+textarea {
+    height: 80px;
+}
+
 button[type=submit] {
     width: 50%;
     background-color: #4CAF50;
@@ -38,9 +43,7 @@ button[type=submit] {
     border-radius: 4px;
     cursor: pointer;
 }
-input[type=submit]:hover {
+
+button[type=submit]:hover {
     background-color: #45a049;
-  }
-textarea {
-    height: 80px;
 }
