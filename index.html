@@ -8,7 +8,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body id="root">
-    <div></div>
+    <div>
+        <form id="theForm">
+            <label for="title">Title of the post</label>
+            <input name="title" id="title" type="text" required>
+            <label for="dateFrom">The travel available from:</label>
+            <input name="dateFrom" id="dateFrom" type="date" required>
+            <label for="dateTo">The travel available to:</label>
+            <input name="dateTo" id="dateTo" type="date" required>
+            <label for="description">About the trip:</label>
+            <textarea name="description" id="description" type="text" required>
+            <label for="location">Location of the travel:</label>
+            <input name="location" id="location" type="text" required>
+            <label for="country">Country of the travel:</label>
+            <input name="country" id="country" type="text" required>
+            <label for="picture">Image of the destination:</label>
+            <input name="picture" id="picture" type="url" required>
+            <button type="submit">Submit destination</button>
+        </form>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
