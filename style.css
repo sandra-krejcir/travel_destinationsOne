@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+div {
+    padding: 32px;
+    width: 800px;
+}
+
+#theForm {
+    display: flex;
+    flex-wrap: wrap;
+}
+
