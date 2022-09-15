@@ -1,14 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 }
 
 div {
     padding: 32px;
-    width: 800px;
+    width: 400px;
+    margin: auto;
 }
 
 #theForm {
-    display: flex;
-    flex-wrap: wrap;
+    width: 80%;
 }
 
+label, input {
+    display: block;
+    margin-bottom: 8px;
+}
+
+label {
+    margin-top: 24px;
+}
+
+input, textarea {
+    padding: 4px 8px;
+    width: 100%;
+    resize: none;
+}
+
+textarea {
+    height: 80px;
+}
