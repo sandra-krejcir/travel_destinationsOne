@@ -9,7 +9,7 @@
 body {
     background: black url("img/background.jpg") no-repeat center center fixed;
     background-size: cover;
-  }
+}
 
 #form-wrapper {
     padding: 32px;
