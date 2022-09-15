@@ -6,7 +6,7 @@ const port = 3000;
 
 let db;
 let connectionString =
-  "mongodb+srv://krejcir_sandra:54Ndr42810@cph-webdev.6nfcpoh.mongodb.net/travel_project";
+  "mongodb+srv://bob:cphwebdevcdhs@cdhs.ini9gfr.mongodb.net/CDHS";
 mongodb.connect(
   connectionString,
   {
