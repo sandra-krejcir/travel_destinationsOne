@@ -37,7 +37,7 @@ h1 {
     justify-content: center;
 }
 
-label, input {
+label, input, select {
     display: block;
     margin-bottom: 8px;
 }
@@ -47,7 +47,7 @@ label {
     width: 100%;
 }
 
-input, textarea {
+input, textarea, select {
     padding: 8px 12px;
     width: 100%;
     resize: none;
@@ -59,7 +59,7 @@ textarea {
     height: 80px;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     outline: none;
 }
 
