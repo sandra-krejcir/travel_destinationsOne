@@ -6,14 +6,35 @@
     font-size: 16px;
 }
 
-div {
+body {
+    background: black url("img/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+  }
+
+#form-wrapper {
     padding: 32px;
     width: 400px;
-    margin: auto;
+    margin: 48px auto;
+    background: rgba( 255, 255, 255, 0.4 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 12px );
+    -webkit-backdrop-filter: blur( 12px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
 }
 
 #theForm {
-    width: 80%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 label, input {
@@ -23,20 +44,28 @@ label, input {
 
 label {
     margin-top: 24px;
+    width: 100%;
 }
 
 input, textarea {
-    padding: 4px 8px;
+    padding: 8px 12px;
     width: 100%;
     resize: none;
+    border: none;
+    border-radius: 4px;
 }
 
 textarea {
     height: 80px;
 }
 
+input:focus, textarea:focus {
+    outline: none;
+}
+
 button[type=submit] {
-    width: 50%;
+    margin-top: 24px;
+    padding: 8px 24px;
     background-color: #4CAF50;
     color: white;
     border: none;
