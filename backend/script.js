@@ -33,6 +33,16 @@ app.get("/", (req, res) => {
     .catch((error) => console.error(error));
 });
 
+app.get("/:destinationID", (req, res) => {
+  db.collection("destinations")
+    .findOne({ _id: new ObjectId(req.params.destinationID) })
+    .then((results) => {
+      console.log(results);
+      res.send(results);
+    })
+    .catch((error) => console.error(error));
+});
+
 app.post("/", (req, res) => {
   console.log(req.body);
   db.collection("destinations")
