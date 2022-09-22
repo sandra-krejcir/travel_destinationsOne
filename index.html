@@ -9,8 +9,8 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body id="root">
-    <div id="form-wrapper">
+  <body id="root" class="sideView">
+    <div class="form-wrapper">
       <h1>Create new entry</h1>
       <form id="theForm">
         <label for="title">Title of the post</label>
@@ -91,9 +91,9 @@
       </form>
       <p id="submitMessage"></p>
     </div>
-    <div id="destinationList"></div>
+    <div id="destinationList" class="columnDisplay"></div>
     <template id="theList">
-      <div id="">
+      <div id="" class="post-wrapper">
         <h2></h2>
         <p></p>
         <button id="edit-button">Edit destination</button>

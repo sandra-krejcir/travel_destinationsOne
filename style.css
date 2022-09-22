@@ -1,78 +1,107 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap");
 
 * {
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
 }
 
 body {
-    background: black url("img/background.jpg") no-repeat center center fixed;
-    background-size: cover;
+  background: black url("img/background.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-#form-wrapper {
-    padding: 32px;
-    width: 400px;
-    margin: 48px auto;
-    background: rgba( 255, 255, 255, 0.4 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 12px );
-    -webkit-backdrop-filter: blur( 12px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+.form-wrapper {
+  padding: 32px;
+  width: 400px;
+  margin: 48px auto;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 h1 {
-    font-size: 24px;
-    text-align: center;
-    margin: 0;
+  font-size: 24px;
+  text-align: center;
+  margin: 0;
 }
 
 #theForm {
-    width: 100%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-label, input, select {
-    display: block;
-    margin-bottom: 8px;
+label,
+input,
+select {
+  display: block;
+  margin-bottom: 8px;
 }
 
 label {
-    margin-top: 24px;
-    width: 100%;
+  margin-top: 24px;
+  width: 100%;
 }
 
-input, textarea, select {
-    padding: 8px 12px;
-    width: 100%;
-    resize: none;
-    border: none;
-    border-radius: 4px;
+input,
+textarea,
+select {
+  padding: 8px 12px;
+  width: 100%;
+  resize: none;
+  border: none;
+  border-radius: 4px;
 }
 
 textarea {
-    height: 80px;
+  height: 80px;
 }
 
-input:focus, textarea:focus, select:focus {
-    outline: none;
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 
-button[type=submit] {
-    margin-top: 24px;
-    padding: 8px 24px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+button[type="submit"] {
+  margin-top: 24px;
+  padding: 8px 24px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-button[type=submit]:hover {
-    background-color: #45a049;
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.sideView {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.columnDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+}
+
+.post-wrapper {
+  padding: 32px;
+  width: 350px;
+  margin: 48px auto;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
