@@ -40,7 +40,7 @@ window.addEventListener("load", async () => {
     copy.querySelector("p").textContent = contact.description;
     copy.querySelector("#edit-button").addEventListener("click", () => {
       window.location.replace(
-        "http://127.0.0.1:3000/update.html?id=" + contact._id
+        "http://127.0.0.1:5500/update.html?id=" + contact._id
       );
     });
     const parent = document.querySelector("#destinationList");
@@ -52,19 +52,5 @@ window.addEventListener("load", async () => {
     const body = await response.json();
     console.log(body);
     return body;
-  }
-
-  async function getSpecificContact(id) {
-    const response = await fetch(url + id);
-    const body = await response.json();
-    return body;
-  }
-
-  async function putData(id, contact) {
-    const response = await fetch(url + id, {
-      method: "PUT",
-      body: JSON.stringify(contact),
-      headers: { "Content-Type": "application/json" },
-    });
   }
 });
