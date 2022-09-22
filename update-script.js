@@ -51,6 +51,9 @@ form.addEventListener("submit", (event) => {
   const id = getIdFromUrl();
 
   putData(id, contact);
+  clearForm();
+  document.querySelector("#submitMessage").textContent =
+    "Destination successfully updated!";
 });
 
 async function putData(id, contact) {
@@ -59,4 +62,15 @@ async function putData(id, contact) {
     body: JSON.stringify(contact),
     headers: { "Content-Type": "application/json" },
   });
+  console.log(response);
+}
+
+function clearForm() {
+  document.querySelector("#title").value = "";
+  document.querySelector("#dateFrom").value = "";
+  document.querySelector("#dateTo").value = "";
+  document.querySelector("#description").value = "";
+  document.querySelector("#location").value = "";
+  document.querySelector("#country").value = "";
+  document.querySelector("#picture").value = "";
 }
