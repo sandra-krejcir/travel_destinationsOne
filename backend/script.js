@@ -1,33 +1,64 @@
-const http = require("http");
+const express = require("express");
+const app = express();
+const port = 3000;
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+var cors = require("cors");
+app.use(cors());
+
 const mongodb = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectId;
 
 const hostname = "127.0.0.1";
-const port = 3000;
 
 let db;
-let connectionString =
-  "mongodb+srv://bob:cphwebdevcdhs@cdhs.ini9gfr.mongodb.net/CDHS";
+let connectionString = `mongodb+srv://bob:cphwebdevcdhs@cdhs.ini9gfr.mongodb.net/CDHS`;
+
 mongodb.connect(
   connectionString,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
+  { useNewUrlParser: true, useUnifiedTopology: true },
   function (err, client) {
     db = client.db();
-    db.collection("destinations").findOne({}, function (err, result) {
-      if (err) throw err;
-      console.log(result);
-      const server = http.createServer((req, res) => {
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "text/plain");
-        res.write("Hello");
-        res.end();
-      });
-
-      server.listen(port, hostname, () => {
-        console.log(`Server running at http://${hostname}:${port}/`);
-      });
-    });
   }
 );
+
+app.get("/", (req, res) => {
+  db.collection("destinations")
+    .find()
+    .toArray()
+    .then((results) => {
+      console.log(results);
+      res.send(results);
+    })
+    .catch((error) => console.error(error));
+});
+
+app.post("/", (req, res) => {
+  console.log(req.body);
+  db.collection("destinations")
+    .insertOne(req.body)
+    .then((results) => {
+      console.log(results);
+      res.send(results);
+    })
+    .catch((error) => console.error(error));
+});
+
+app.put("/:destinationID", (req, res) => {
+  console.log(req.params.destinationID);
+  db.collection("destinations")
+    .updateOne(
+      { _id: new ObjectId(req.params.destinationID) },
+      { $set: req.body }
+    )
+    .then((results) => {
+      console.log(results);
+    })
+    .catch((error) => console.error(error));
+});
+
+app.use(express.json());
+
+app.listen(port, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
