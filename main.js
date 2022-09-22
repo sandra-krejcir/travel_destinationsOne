@@ -3,8 +3,8 @@ const url = "http://127.0.0.1:3000/";
 window.addEventListener("load", async () => {
   const data = await getData();
   console.log(data);
-  /*  await putData(); */
-  /*  await postData(); */
+  await putData();
+  await postData();
 
   data.forEach((contact) => showDestinations(contact));
 
@@ -30,20 +30,26 @@ window.addEventListener("load", async () => {
     return body;
   }
 
-  /* async function putData() {
-  const response = await fetch(url + "632c3f1be961e63b4bd0e5a4", {
-    method: "PUT",
-    body: JSON.stringify(destination),
-    headers: { "Content-Type": "application/json" },
-  });
-}
- */
-  /* async function postData() {
-  const response = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(destination),
-    headers: { "Content-Type": "application/json" },
-  });
-  console.log(response);
-} */
+  async function getSpecificContact(id) {
+    const response = await fetch(url + id);
+    const body = await response.json();
+    return body;
+  }
+
+  async function putData(id, contact) {
+    const response = await fetch(url + id, {
+      method: "PUT",
+      body: JSON.stringify(contact),
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  async function postData(contact) {
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(contact),
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(response);
+  }
 });
