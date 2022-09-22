@@ -1,20 +1,21 @@
 const url = "http://127.0.0.1:3000/";
 
-const destination = {
-  title: "New code, how bout now 2",
-  dateFrom: 2022 - 10 - 12,
-  dateTo: 2022 - 10 - 15,
-  description: "blabla",
-  location: "here",
-  country: "neverland",
-  picture: "url",
-};
+const form = document.querySelector("#theForm");
 
-window.addEventListener("load", async () => {
-  console.log("hello");
-  /* await getData(); */
-  await putData();
-  /*  await postData(); */
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const contact = {
+    title: document.querySelector("#title").value,
+    dateFrom: document.querySelector("#dateFrom").value,
+    dateTo: document.querySelector("#dateTo").value,
+    description: document.querySelector("#description").value,
+    location: document.querySelector("#location").value,
+    country: document.querySelector("#country").value,
+    picture: document.querySelector("#picture").value,
+  };
+
+  postData(contact);
 });
 
 /* async function getData() {
@@ -24,19 +25,19 @@ window.addEventListener("load", async () => {
   return body;
 } */
 
-async function putData() {
+/* async function putData() {
   const response = await fetch(url + "632c3f1be961e63b4bd0e5a4", {
     method: "PUT",
-    body: JSON.stringify(destination),
+    body: JSON.stringify(contact),
     headers: { "Content-Type": "application/json" },
   });
-}
+} */
 
-/* async function postData() {
+async function postData(contact) {
   const response = await fetch(url, {
     method: "POST",
-    body: JSON.stringify(destination),
+    body: JSON.stringify(contact),
     headers: { "Content-Type": "application/json" },
   });
   console.log(response);
-} */
+}
