@@ -12,22 +12,28 @@ const destination = {
 
 window.addEventListener("load", async () => {
   console.log("hello");
-  /* await getData(); */
+  await getData();
   await putData();
   /*  await postData(); */
 });
 
-/* async function getData() {
+async function getData() {
   const response = await fetch(url);
   const body = await response.json();
   console.log(body);
   return body;
-} */
+}
 
-async function putData() {
-  const response = await fetch(url + "632c3f1be961e63b4bd0e5a4", {
+async function getSpecificContact(id) {
+	const response = await fetch(url + id);
+	const body = await response.json();
+	return body;
+}
+
+async function putData(id, contact) {
+  const response = await fetch(url + id, {
     method: "PUT",
-    body: JSON.stringify(destination),
+    body: JSON.stringify(contact),
     headers: { "Content-Type": "application/json" },
   });
 }
