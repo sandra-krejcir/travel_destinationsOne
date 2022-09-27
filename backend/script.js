@@ -6,15 +6,21 @@ app.use(bodyParser.json());
 var cors = require("cors");
 app.use(cors());
 
-const mongodb = require("mongodb").MongoClient;
+const mongoose = require("mongoose");
 const ObjectId = require("mongodb").ObjectId;
 
 const hostname = "127.0.0.1";
-
-let db;
 let connectionString = `mongodb+srv://bob:cphwebdevcdhs@cdhs.ini9gfr.mongodb.net/CDHS`;
 
-mongodb.connect(
+const Destination = require("./../backend/schemas");
+
+mongoose.connect(connectionString).catch((err) => console.log(err));
+
+Destination.find({}, (err, destinations) => {
+  console.log(destinations);
+});
+
+/* mongodb.connect(
   connectionString,
   { useNewUrlParser: true, useUnifiedTopology: true },
   function (err, client) {
@@ -65,7 +71,7 @@ app.put("/:destinationID", (req, res) => {
       console.log(results);
     })
     .catch((error) => console.error(error));
-});
+}); */
 
 app.use(express.json());
 
