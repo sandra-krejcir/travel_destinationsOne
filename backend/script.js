@@ -3,8 +3,6 @@ const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
-var cors = require("cors");
-app.use(cors());
 
 const mongodb = require("mongodb").MongoClient;
 const ObjectId = require("mongodb").ObjectId;
