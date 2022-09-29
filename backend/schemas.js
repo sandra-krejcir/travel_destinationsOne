@@ -6,7 +6,7 @@ let destinationSchema = new mongoose.Schema({
   description: String,
   location: String,
   country: String,
-  url: String,
+  picture: String,
 });
 
 module.exports = mongoose.model("Destination", destinationSchema);

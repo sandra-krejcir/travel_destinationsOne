@@ -16,8 +16,59 @@ const Destination = require("./../backend/schemas");
 
 mongoose.connect(connectionString).catch((err) => console.log(err));
 
-Destination.find({}, (err, destinations) => {
-  console.log(destinations);
+app.get("/", (req, res) => {
+  Destination.find({}, (err, data) => {
+    console.log(data);
+    res.status(200).json(data);
+  });
+});
+
+app.get("/:destinationID", (req, res) => {
+  Destination.find(
+    { _id: new ObjectId(req.params.destinationID) },
+    (err, data) => {
+      console.log(data);
+      res.status(200).json(data);
+    }
+  );
+});
+
+app.post("/", (req, res) => {
+  const newDestination = new Destination({
+    title: req.body.title,
+    dateFrom: req.body.dateFrom,
+    dateTo: req.body.dateTo,
+    description: req.body.description,
+    location: req.body.location,
+    country: req.body.country,
+    picture: req.body.picture,
+  });
+  newDestination.save((err) => {
+    if (err) console.error(err);
+    res.status(201).json(newDestination);
+  });
+});
+
+app.put("/:destinationID", (req, res) => {
+  console.log(req.params.destinationID);
+  const newDestination = new Destination({
+    title: req.body.title,
+    dateFrom: req.body.dateFrom,
+    dateTo: req.body.dateTo,
+    description: req.body.description,
+    location: req.body.location,
+    country: req.body.country,
+    picture: req.body.picture,
+  });
+  (newDestination._id = new ObjectId(req.params.destinationID)),
+    newDestination
+      .updateOne(newDestination, {
+        _id: new ObjectId(req.params.destinationID),
+      })
+      .then((results) => {
+        console.log(results);
+      })
+      .catch((error) => console.error(error));
 });
 
 /* mongodb.connect(

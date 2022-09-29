@@ -3,7 +3,7 @@ const url = "http://127.0.0.1:3000/";
 window.addEventListener("load", async function () {
   const id = getIdFromUrl();
   const contact = await getSpecificContact(id);
-  fillInTheForm(contact);
+  fillInTheForm(contact[0]);
 });
 
 function getIdFromUrl() {
