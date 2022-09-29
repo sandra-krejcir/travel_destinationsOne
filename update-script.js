@@ -48,8 +48,6 @@ form.addEventListener("submit", (event) => {
     picture: document.querySelector("#picture").value,
   };
 
-  const id = getIdFromUrl();
-
   putData(id, contact);
   clearForm();
   document.querySelector("#submitMessage").textContent =
