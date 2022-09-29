@@ -71,6 +71,13 @@ app.put("/:destinationID", (req, res) => {
       .catch((error) => console.error(error));
 });
 
+app.delete("/:destinationID", (req, res) => {
+  Destination.deleteOne({ _id: new ObjectId(req.params.destinationID) })
+    .then((results) => {
+      console.log(results);
+    })
+    .catch((error) => console.error(error));
+});
 /* mongodb.connect(
   connectionString,
   { useNewUrlParser: true, useUnifiedTopology: true },
