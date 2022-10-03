@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Travel Destinations | Update</title>
+        <title>Travel Destinations | Create new</title>
         <meta charset="utf-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="style.css" />
     </head>
     <body id="root">
         <header>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="create.html">Create new</a>
-                    </li>
-                </ul>
-            </nav>
+			<nav>
+				<ul>
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+					<li class="active">
+						<a href="create.html">Create new</a>
+					</li>
+				</ul>
+			</nav>
         </header>
         <div class="form-wrapper">
-            <h1>Update existing entry</h1>
+            <h1>Create new entry</h1>
             <form id="theForm">
                 <label for="title">Title of the post</label>
                 <input name="title" id="title" type="text" required />
@@ -107,8 +107,8 @@
                 <input name="picture" id="picture" type="url" required />
                 <button type="submit">Submit destination</button>
             </form>
-			<p id="submitMessage"></p>
+            <p id="submitMessage"></p>
         </div>
-        <script src="update-script.js"></script>
+        <script src="main.js"></script>
     </body>
 </html>
