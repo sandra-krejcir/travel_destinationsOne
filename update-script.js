@@ -36,6 +36,7 @@ const form = document.querySelector("#theForm");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  const id = getIdFromUrl();
   // console.log("hi, form is submitted");
 
   const contact = {

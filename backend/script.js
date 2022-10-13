@@ -13,6 +13,10 @@ const hostname = "127.0.0.1";
 let connectionString = `mongodb+srv://bob:cphwebdevcdhs@cdhs.ini9gfr.mongodb.net/CDHS`;
 
 const Destination = require("./../backend/schemas");
+const User = require("./../backend/userSchema");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config();
 
 mongoose.connect(connectionString).catch((err) => console.log(err));
 
@@ -23,6 +27,19 @@ app.get("/", (req, res) => {
   });
 });
 
+// NEW GET
+app.post("/auth/login/profile", (req, res) => {
+  User.findOne(
+    { email: req.body.email, password: req.body.password },
+    (err, user) => {
+      if (err) console.error(err);
+      const token = jwt.sign({ _id: user._id }, process.env.jwt_secret);
+      console.log(token);
+      res.status(200).json(token.json());
+    }
+  );
+});
+
 app.get("/:destinationID", (req, res) => {
   Destination.find(
     { _id: new ObjectId(req.params.destinationID) },
@@ -31,6 +48,20 @@ app.get("/:destinationID", (req, res) => {
       res.status(200).json(data);
     }
   );
+});
+
+// NEW POST
+app.post("/auth/signUp", (req, res) => {
+  const newUser = new User({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    password: req.body.password,
+  });
+  newUser.save((err) => {
+    if (err) console.error(err);
+    res.status(201).json(newUser);
+  });
 });
 
 app.post("/", (req, res) => {
