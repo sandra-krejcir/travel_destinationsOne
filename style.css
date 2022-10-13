@@ -46,7 +46,7 @@ header nav ul {
 }
 
 header nav ul li {
-	display: block;
+	display: inline-block;
 	padding: 8px 12px;
 	font-weight: 900;
 	transition: all 0.2s;
@@ -57,6 +57,7 @@ header nav ul li:hover, header nav ul li.active {
 	background-color: darkgreen;
 	cursor: pointer;
 	color: white;
+    border-radius: 4px;
 }
 
 header nav ul li a {
@@ -78,9 +79,13 @@ header nav ul li a {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 32px;
     text-align: center;
     margin: 0;
+}
+
+h2 {
+	font-size: 20px;
 }
 
 #theForm {
@@ -150,27 +155,38 @@ button[type="submit"]:hover {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
 	display: grid;
-	grid-template-rows: min-content auto min-content;
-	grid-template-columns: auto auto;
-	gap: auto;
+	grid-template-rows: min-content min-content auto min-content;
+	grid-template-columns: auto min-content min-content;
+	gap: 8px;
 }
 
 .post-wrapper h2, .post-wrapper p {
 	grid-column: 1 / -1;
 	width: 100%;
-	margin-top: 0;
+	margin: 0;
 }
 
-.post-wrapper button#edit-button {
-	padding: 6px 8px
+.post-wrapper p.dates {
+	color: rgb(60, 60, 60);
+	text-transform: uppercase;
+	font-size: 12px;
+	letter-spacing: 2px;
 }
 
-.post-wrapper button#edit-button svg {
-	display: block;
+.post-wrapper p.description {
+	margin-bottom: 16px;
+}
+
+.post-wrapper button#edit-button, .post-wrapper button#delete-button {
+	padding: 8px 8px
 }
 
 .post-wrapper button#delete-button {
 	background-color: rgb(193, 0, 0);
 	color: white;
 	justify-self: end;
+}
+
+.post-wrapper button svg {
+	display: block;
 }
