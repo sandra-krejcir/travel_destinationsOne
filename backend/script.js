@@ -6,15 +6,110 @@ app.use(bodyParser.json());
 var cors = require("cors");
 app.use(cors());
 
-const mongodb = require("mongodb").MongoClient;
+const mongoose = require("mongoose");
 const ObjectId = require("mongodb").ObjectId;
 
 const hostname = "127.0.0.1";
-
-let db;
 let connectionString = `mongodb+srv://bob:cphwebdevcdhs@cdhs.ini9gfr.mongodb.net/CDHS`;
 
-mongodb.connect(
+const Destination = require("./../backend/schemas");
+const User = require("./../backend/userSchema");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config();
+
+mongoose.connect(connectionString).catch((err) => console.log(err));
+
+app.get("/", (req, res) => {
+  Destination.find({}, (err, data) => {
+    console.log(data);
+    res.status(200).json(data);
+  });
+});
+
+// NEW GET
+app.post("/auth/login/profile", (req, res) => {
+  User.findOne(
+    { email: req.body.email, password: req.body.password },
+    (err, user) => {
+      if (err) console.error(err);
+      const token = jwt.sign({ _id: user._id }, process.env.jwt_secret);
+      console.log(token);
+      res.status(200).json(token.json());
+    }
+  );
+});
+
+app.get("/:destinationID", (req, res) => {
+  Destination.find(
+    { _id: new ObjectId(req.params.destinationID) },
+    (err, data) => {
+      console.log(data);
+      res.status(200).json(data);
+    }
+  );
+});
+
+// NEW POST
+app.post("/auth/signUp", (req, res) => {
+  const newUser = new User({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    password: req.body.password,
+  });
+  newUser.save((err) => {
+    if (err) console.error(err);
+    res.status(201).json(newUser);
+  });
+});
+
+app.post("/", (req, res) => {
+  const newDestination = new Destination({
+    title: req.body.title,
+    dateFrom: req.body.dateFrom,
+    dateTo: req.body.dateTo,
+    description: req.body.description,
+    location: req.body.location,
+    country: req.body.country,
+    picture: req.body.picture,
+  });
+  newDestination.save((err) => {
+    if (err) console.error(err);
+    res.status(201).json(newDestination);
+  });
+});
+
+app.put("/:destinationID", (req, res) => {
+  console.log(req.params.destinationID);
+  const newDestination = new Destination({
+    title: req.body.title,
+    dateFrom: req.body.dateFrom,
+    dateTo: req.body.dateTo,
+    description: req.body.description,
+    location: req.body.location,
+    country: req.body.country,
+    picture: req.body.picture,
+  });
+  (newDestination._id = new ObjectId(req.params.destinationID)),
+    newDestination
+      .updateOne(newDestination, {
+        _id: new ObjectId(req.params.destinationID),
+      })
+      .then((results) => {
+        console.log(results);
+      })
+      .catch((error) => console.error(error));
+});
+
+app.delete("/:destinationID", (req, res) => {
+  Destination.deleteOne({ _id: new ObjectId(req.params.destinationID) })
+    .then((results) => {
+      console.log(results);
+    })
+    .catch((error) => console.error(error));
+});
+/* mongodb.connect(
   connectionString,
   { useNewUrlParser: true, useUnifiedTopology: true },
   function (err, client) {
@@ -65,7 +160,7 @@ app.put("/:destinationID", (req, res) => {
       console.log(results);
     })
     .catch((error) => console.error(error));
-});
+}); */
 
 app.use(express.json());
 

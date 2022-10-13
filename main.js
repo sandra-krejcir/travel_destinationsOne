@@ -1,12 +1,16 @@
 const url = "http://127.0.0.1:3000/";
 
+window.addEventListener("load", async () => {
+  let data = await getData();
+  console.log(data);
+
+  data.forEach((contact) => showDestinations(contact));
+});
+
 const form = document.querySelector("#theForm");
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  document.querySelector("#destinationList").innerHTML = "";
-  const data = await getData();
-  data.forEach((contact) => showDestinations(contact));
 
   const contact = {
     title: document.querySelector("#title").value,
@@ -30,14 +34,11 @@ async function postData(contact) {
   console.log(response);
   document.querySelector("#submitMessage").textContent =
     "Destination successfully posted!";
+
+  document.querySelector("#destinationList").innerHTML = "";
+  let newData = await getData();
+  newData.forEach((contact) => showDestinations(contact));
 }
-
-window.addEventListener("load", async () => {
-  const data = await getData();
-  console.log(data);
-
-  data.forEach((contact) => showDestinations(contact));
-});
 
 function showDestinations(contact) {
   const template = document.querySelector("#theList").content;
@@ -50,6 +51,11 @@ function showDestinations(contact) {
       "http://127.0.0.1:5500/update.html?id=" + contact._id
     );
   });
+
+  copy.querySelector("#delete-button").addEventListener("click", () => {
+    //console.log(contact._id);
+    deleteData(contact._id);
+  });
   const parent = document.querySelector("#destinationList");
   parent.appendChild(copy);
 }
@@ -59,4 +65,12 @@ async function getData() {
   const body = await response.json();
   console.log(body);
   return body;
+}
+
+async function deleteData(id) {
+  fetch(url + id, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+  });
+  // return document.querySelector(`#${id}`).remove();
 }

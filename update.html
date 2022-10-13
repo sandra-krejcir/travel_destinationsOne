@@ -1,96 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Travel Destinations</title>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body id="root">
-    <div class="form-wrapper">
-      <h1>Update existing entry</h1>
-      <form id="theForm">
-        <label for="title">Title of the post</label>
-        <input name="title" id="title" type="text" required />
-        <label for="dateFrom">The travel available from:</label>
-        <input name="dateFrom" id="dateFrom" type="date" required />
-        <label for="dateTo">The travel available to:</label>
-        <input name="dateTo" id="dateTo" type="date" required />
-        <label for="description">About the trip:</label>
-        <textarea
-          name="description"
-          id="description"
-          type="text"
-          required
-        ></textarea>
-        <label for="location">Location of the travel:</label>
-        <input name="location" id="location" type="text" required />
-        <label for="country">Country of the travel:</label>
-        <!-- Europe -->
-        <select id="country" name="country">
-          <option disabled selected>Please select country</option>
-          <option value="Aland Islands">Aland Islands</option>
-          <option value="Albania">Albania</option>
-          <option value="Andorra">Andorra</option>
-          <option value="Austria">Austria</option>
-          <option value="Belarus">Belarus</option>
-          <option value="Belgium">Belgium</option>
-          <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-          <option value="Bulgaria">Bulgaria</option>
-          <option value="Croatia">Croatia</option>
-          <option value="Czechia">Czechia</option>
-          <option value="Denmark">Denmark</option>
-          <option value="Estonia">Estonia</option>
-          <option value="Faroe Islands">Faroe Islands</option>
-          <option value="Finland">Finland</option>
-          <option value="France">France</option>
-          <option value="Germany">Germany</option>
-          <option value="Gibraltar">Gibraltar</option>
-          <option value="Greece">Greece</option>
-          <option value="Guernsey">Guernsey</option>
-          <option value="Vatican City State">Vatican City State</option>
-          <option value="Hungary">Hungary</option>
-          <option value="Iceland">Iceland</option>
-          <option value="Ireland">Ireland</option>
-          <option value="Isle of Man">Isle of Man</option>
-          <option value="Italy">Italy</option>
-          <option value="Jersey">Jersey</option>
-          <option value="Kosovo">Kosovo</option>
-          <option value="Latvia">Latvia</option>
-          <option value="Liechtenstein">Liechtenstein</option>
-          <option value="Lithuania">Lithuania</option>
-          <option value="Luxembourg">Luxembourg</option>
-          <option value="Macedonia">Macedonia</option>
-          <option value="Malta">Malta</option>
-          <option value="Moldova">Moldova</option>
-          <option value="Monaco">Monaco</option>
-          <option value="Montenegro">Montenegro</option>
-          <option value="Netherlands">Netherlands</option>
-          <option value="Norway">Norway</option>
-          <option value="Poland">Poland</option>
-          <option value="Portugal">Portugal</option>
-          <option value="Romania">Romania</option>
-          <option value="San Marino">San Marino</option>
-          <option value="Serbia">Serbia</option>
-          <option value="Slovakia">Slovakia</option>
-          <option value="Slovenia">Slovenia</option>
-          <option value="Spain">Spain</option>
-          <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
-          <option value="Sweden">Sweden</option>
-          <option value="Switzerland">Switzerland</option>
-          <option value="Ukraine">Ukraine</option>
-          <option value="United Kingdom">United Kingdom</option>
-        </select>
-        <!--input name="country" id="country" type="text" required-->
-        <label for="picture">Image URL:</label>
-        <input name="picture" id="picture" type="url" required />
-        <button type="submit">Submit destination</button>
-      </form>
-      <p id="submitMessage"></p>
-      <script src="update-script.js"></script>
-    </div>
-  </body>
+    <head>
+        <title>Travel Destinations | Update</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body id="root">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="create.html">Create new</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="form-wrapper">
+            <h1>Update existing entry</h1>
+            <form id="theForm">
+                <label for="title">Title of the post</label>
+                <input name="title" id="title" type="text" required />
+                <label for="dateFrom">The travel available from:</label>
+                <input name="dateFrom" id="dateFrom" type="date" required />
+                <label for="dateTo">The travel available to:</label>
+                <input name="dateTo" id="dateTo" type="date" required />
+                <label for="description">About the trip:</label>
+                <textarea
+                    name="description"
+                    id="description"
+                    type="text"
+                    required
+                ></textarea>
+                <label for="location">Location of the travel:</label>
+                <input name="location" id="location" type="text" required />
+                <label for="country">Country of the travel:</label>
+                <!-- Europe -->
+                <select id="country" name="country">
+                    <option disabled selected>Please select country</option>
+                    <option value="Aland Islands">Aland Islands</option>
+                    <option value="Albania">Albania</option>
+                    <option value="Andorra">Andorra</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Belarus">Belarus</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Bosnia and Herzegovina">
+                        Bosnia and Herzegovina
+                    </option>
+                    <option value="Bulgaria">Bulgaria</option>
+                    <option value="Croatia">Croatia</option>
+                    <option value="Czechia">Czechia</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Estonia">Estonia</option>
+                    <option value="Faroe Islands">Faroe Islands</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Gibraltar">Gibraltar</option>
+                    <option value="Greece">Greece</option>
+                    <option value="Guernsey">Guernsey</option>
+                    <option value="Vatican City State">
+                        Vatican City State
+                    </option>
+                    <option value="Hungary">Hungary</option>
+                    <option value="Iceland">Iceland</option>
+                    <option value="Ireland">Ireland</option>
+                    <option value="Isle of Man">Isle of Man</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Jersey">Jersey</option>
+                    <option value="Kosovo">Kosovo</option>
+                    <option value="Latvia">Latvia</option>
+                    <option value="Liechtenstein">Liechtenstein</option>
+                    <option value="Lithuania">Lithuania</option>
+                    <option value="Luxembourg">Luxembourg</option>
+                    <option value="Macedonia">Macedonia</option>
+                    <option value="Malta">Malta</option>
+                    <option value="Moldova">Moldova</option>
+                    <option value="Monaco">Monaco</option>
+                    <option value="Montenegro">Montenegro</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Poland">Poland</option>
+                    <option value="Portugal">Portugal</option>
+                    <option value="Romania">Romania</option>
+                    <option value="San Marino">San Marino</option>
+                    <option value="Serbia">Serbia</option>
+                    <option value="Slovakia">Slovakia</option>
+                    <option value="Slovenia">Slovenia</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Svalbard and Jan Mayen">
+                        Svalbard and Jan Mayen
+                    </option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="Ukraine">Ukraine</option>
+                    <option value="United Kingdom">United Kingdom</option>
+                </select>
+                <!--input name="country" id="country" type="text" required-->
+                <label for="picture">Image URL:</label>
+                <input name="picture" id="picture" type="url" required />
+                <button type="submit">Submit destination</button>
+            </form>
+			<p id="submitMessage"></p>
+        </div>
+        <script src="update-script.js"></script>
+    </body>
 </html>

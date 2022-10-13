@@ -3,7 +3,7 @@ const url = "http://127.0.0.1:3000/";
 window.addEventListener("load", async function () {
   const id = getIdFromUrl();
   const contact = await getSpecificContact(id);
-  fillInTheForm(contact);
+  fillInTheForm(contact[0]);
 });
 
 function getIdFromUrl() {
@@ -36,6 +36,7 @@ const form = document.querySelector("#theForm");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
+  const id = getIdFromUrl();
   // console.log("hi, form is submitted");
 
   const contact = {
@@ -47,8 +48,6 @@ form.addEventListener("submit", (event) => {
     country: document.querySelector("#country").value,
     picture: document.querySelector("#picture").value,
   };
-
-  const id = getIdFromUrl();
 
   putData(id, contact);
   clearForm();
