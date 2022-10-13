@@ -21,11 +21,23 @@ async function getSpecificContact(id) {
   return body;
 }
 
+function inputDate(dbDate) {
+	let date = new Date(dbDate).getDate();
+	let month = new Date(dbDate).getMonth() + 1;
+	const year = new Date(dbDate).getFullYear();
+
+	if (date < 10) date = "0" + date;
+	if (month < 10) month = "0" + month;
+
+	fieldDate = year + "-" + month + "-" + date;
+	return fieldDate;
+}
+
 function fillInTheForm(contact) {
   console.log(contact);
   document.querySelector("#title").value = contact.title;
-  document.querySelector("#dateFrom").value = contact.dateFrom;
-  document.querySelector("#dateTo").value = contact.dateTo;
+  document.querySelector("#dateFrom").value = inputDate(contact.dateFrom);
+  document.querySelector("#dateTo").value = inputDate(contact.dateTo);
   document.querySelector("#description").value = contact.description;
   document.querySelector("#location").value = contact.location;
   document.querySelector("#country").value = contact.country;
